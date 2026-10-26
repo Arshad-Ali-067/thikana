@@ -1,6 +1,8 @@
 # Thikana
 
-Thikana is a full-stack web application built with Node.js, Express.js, MongoDB, and EJS. It follows a modular architecture for authentication, database management, validation, image storage, and map integration.
+A full-stack rental property web application built with Node.js, Express.js, MongoDB, and EJS.
+
+Thikana is a web application designed to provide a simple and reliable platform for discovering and managing rental properties. It follows a modular architecture and integrates authentication, database management, image storage, validation, reviews, and location services.
 
 ## Tech Stack
 
