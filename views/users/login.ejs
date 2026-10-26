@@ -1,0 +1,38 @@
+<% layout("/layouts/boilerplate")%>
+<div class="row mt-3">
+<div class="auth-wrap">
+  <div class="auth-card">
+<div class="auth-logo"><i class="fa-regular fa-compass"></i></div>
+<h2 class="tk-page-title text-center">Login</h2>
+<p class="tk-page-sub text-center">Welcome back to Thikana.</p>
+
+<div class="tk-form-card">
+<form action="/login" method="post"  class="needs-validation" novalidate >
+
+
+<div class="mb-3">
+<label for="username" class="form-label">username:</label>
+<input required type="text" name="username" id="username"  class="form-control">
+
+</div>
+
+
+
+
+<div class="mb-3">
+<label for="password" class="form-label">Password:</label>
+<input required type="password" name="password" id="password" class="form-control">
+
+</div>
+
+
+<button class="tk-btn tk-btn-primary w-100 mt-2">Login</button>
+
+
+</form>
+</div>
+<p class="auth-foot">New to Thikana? <a href="/signup">Create an account</a></p>
+
+  </div>
+</div>
+  </div>

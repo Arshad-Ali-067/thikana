@@ -1,0 +1,227 @@
+
+<footer class="tk-footer">
+
+  <!-- call-to-action -->
+ <%if(!currUser){%>
+  <div class="tk-footer__cta">
+    <div class="tk-footer__wrap d-flex flex-wrap align-items-center justify-content-between gap-3">
+      <div>
+        <h3 class="tk-footer__cta-title">Have a space to share?</h3>
+        <p class="tk-footer__cta-text mb-0">
+          List your place on Thikana and welcome guests from around the world.
+        </p>
+      </div>
+
+      <a href="/listings/new" class="tk-btn tk-btn-primary">
+        Become a host
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+<% } %>
+
+  <!-- Main columns -->
+  <div class="tk-footer__wrap tk-footer__main">
+    <div class="row g-4 g-lg-5">
+
+      <!-- Brand -->
+      <div class="col-12 col-lg-4">
+
+        <a href="/" class="tk-footer__brand">
+          <i class="fa-regular fa-compass tk-logo"></i>
+          <span>Thikana<em>.</em></span>
+        </a>
+
+        <p class="tk-footer__about">
+          Discover unique stays, beautiful spaces, and memorable places.
+          Find your perfect Thikana for every kind of journey.
+        </p>
+
+        <div class="tk-footer__social">
+          <i class="fa-brands fa-square-facebook"></i>
+          <i class="fa-brands fa-square-instagram"></i>
+          <i class="fa-brands fa-square-linkedin"></i>
+          <i class="fa-brands fa-square-x-twitter"></i>
+          <i class="fa-brands fa-square-youtube"></i>
+        </div>
+
+      </div>
+
+
+      <!-- Discover -->
+      <div class="col-6 col-md-3 col-lg-2">
+
+        <h4 class="tk-footer__title">Discover</h4>
+
+        <ul class="tk-footer__list">
+
+          <li>
+            <a href="/listings">All stays</a>
+          </li>
+
+          <li>
+            <a href="/listings?category=Trending">Trending stays</a>
+          </li>
+
+          <li>
+            <a href="/listings?category=Iconic">Iconic stays</a>
+          </li>
+
+          <li>
+            <a href="/listings?category=Luxe">Luxe stays</a>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- Categories -->
+      <div class="col-6 col-md-3 col-lg-2">
+
+        <h4 class="tk-footer__title">Categories</h4>
+
+        <ul class="tk-footer__list">
+
+          <li>
+            <a href="/listings?category=Beach">Beach</a>
+          </li>
+
+          <li>
+            <a href="/listings?category=TreeHouse">TreeHouse</a>
+          </li>
+
+          <li>
+            <a href="/listings?category=Camping">Camping</a>
+          </li>
+
+          <li>
+            <a href="/listings?category=Spa">Spa</a>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- Host -->
+      <div class="col-6 col-md-3 col-lg-2">
+
+        <h4 class="tk-footer__title">Host</h4>
+
+        <ul class="tk-footer__list">
+
+          <li>
+            <a href="/listings/new">List your place</a>
+          </li>
+
+          <li>
+            <a href="/listings">Explore stays</a>
+          </li>
+
+          <li>
+            <a href="/profile">Host profile</a>
+          </li>
+
+          <li>
+            <a href="/listings">Manage your stays</a>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- Account -->
+      <div class="col-6 col-md-3 col-lg-2">
+
+        <h4 class="tk-footer__title">Account</h4>
+
+        <ul class="tk-footer__list">
+
+          <% if (currUser) { %>
+
+            <li>
+              <a href="/profile">My profile</a>
+            </li>
+
+            <li>
+              <a href="/listings/new">Add a listing</a>
+            </li>
+
+            <li>
+              <a href="/listings">Explore stays</a>
+            </li>
+
+            <li>
+              <a href="/logout">Log out</a>
+            </li>
+
+          <% } else { %>
+
+            <li>
+              <a href="/login">Sign in</a>
+            </li>
+
+            <li>
+              <a href="/signup">Create account</a>
+            </li>
+
+            <li>
+              <a href="/listings">Explore stays</a>
+            </li>
+
+            <li>
+              <a href="/listings/new">Become a host</a>
+            </li>
+
+          <% } %>
+
+        </ul>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Bottom bar -->
+  <div class="tk-footer__bottom">
+
+    <div class="tk-footer__wrap tk-footer__legal">
+
+      <div class="tk-footer__copy">
+        &copy; <%= new Date().getFullYear() %>
+        <strong>Thikana</strong> Private Limited.
+        All rights reserved.
+      </div>
+
+      <div class="tk-footer__links">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+
+      <div class="tk-footer__locale">
+
+        <span>
+          <i class="fa-solid fa-globe"></i>
+          English (IN)
+        </span>
+
+        <span>
+          <i class="fa-solid fa-indian-rupee-sign"></i>
+          INR
+        </span>
+
+        <a href="#tk-top" class="tk-footer__top" aria-label="Back to top">
+          <i class="fa-solid fa-arrow-up"></i>
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
+

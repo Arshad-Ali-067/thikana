@@ -1,0 +1,74 @@
+<% layout("/layouts/boilerplate")  %>
+<div class="row mt-3">
+  <div class="col-lg-8 mx-auto">
+
+<h3 class="tk-page-title">Edit your Listing</h3>
+    <p class="tk-page-sub">Update the details guests see.</p>
+
+    <div class="tk-form-card">
+    <form method="post" action="/listings/<%=listing._id%>?_method=PUT" enctype="multipart/form-data"  novalidate  class="needs-validation">
+
+<div class="mb-3">
+<label for="title" class="form-label">Title</label>
+<input  required   type="text" id="title" name="listing[title]" value="<%=listing.title%>" class="form-control">
+<div class="valid-feedback">Looks good!</div>
+<div class="invalid-feedback">Title should be valid</div>
+
+</div>
+
+<div class="mb-3">
+<label for="description" class="form-label">Description</label>
+<textarea required     type="text" id="description" rows="4" name="listing[description]" class="form-control"><%=listing.description%></textarea>
+<div class="valid-feedback">Looks good!</div>
+<div class="invalid-feedback">Description should be valid</div>
+</div>
+
+<div class="mb-3">
+<label class="form-label">Current Image</label>
+<img src="<%=OriginalImageUrl%>" class="edit-preview" alt="current listing image">
+</div>
+
+<div class="mb-3">
+<label for="image" class="form-label">Upload New Image</label>
+<input  type="file" id="image" name="listing[image]" class="form-control">
+<div class="valid-feedback">Looks good!</div>
+<div class="invalid-feedback">Image should be valid</div>
+
+</div>
+
+<div class="row">
+
+<div class="mb-3 col-md-4" >
+<label for="price" class="form-label">Price</label>
+<div class="input-group">
+<span class="input-group-text">&#8377;</span>
+<input required     value="<%=listing.price%>"   id="price" name="listing[price]" class="form-control">
+</div>
+<div class="valid-feedback">Looks good!</div>
+<div class="invalid-feedback">Price should be valid</div>
+
+</div>
+
+
+
+<div class=" mb-3 col-md-8">
+<label for="country" class="form-label">Country</label>
+<input required    type="text" value="<%=listing.country%>"  id="country" name="listing[country]" class="form-control">
+<div class="valid-feedback">Looks good!</div>
+<div class="invalid-feedback">Country should be valid</div>
+</div>
+</div>
+
+<div class="mb-3">
+<label for="location" class="form-label">Location</label>
+<input required    type="text" value="<%=listing.location%>"  id="location" name="listing[location]" class="form-control">
+<div class="valid-feedback">Looks good!</div>
+<div class="invalid-feedback">Location should be valid</div>
+</div>
+
+
+<button class="tk-btn tk-btn-primary mt-3">edit</button>
+  </form>
+    </div>
+</div>
+</div>

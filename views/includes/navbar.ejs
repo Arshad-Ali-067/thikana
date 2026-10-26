@@ -1,0 +1,113 @@
+
+<nav class="navbar tk-nav sticky-top">
+  <div class="container-fluid px-3 px-lg-5">
+
+    <a class="navbar-brand" href="/">
+      <i class="fa-regular fa-compass tk-logo"></i>
+      <span class="tk-brand__text">Thikana<span>.</span></span>
+    </a>
+
+
+
+<div class="tk-search">
+  <form
+    class="tk-search-form"
+    action="/listings"
+    method="GET"
+  >
+    <input
+      type="search"
+      name="search"
+      class="tk-search-input"
+      placeholder="Search stays, destinations..."
+      value="<%= typeof search !== 'undefined' ? search : '' %>"
+    >
+
+    <button
+      type="submit"
+      class="tk-search-btn"
+      aria-label="Search"
+    >
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+  </form>
+</div>
+
+
+    
+    <!-- Profile / hamburger menu: every link except the logo lives here -->
+    <div class="dropdown tk-menu-wrap">
+      <button
+        class="tk-menu-btn"
+        type="button"
+        id="tkProfileMenu"
+        data-bs-toggle="dropdown"
+        data-bs-auto-close="true"
+        aria-expanded="false"
+        aria-label="Open menu"
+      >
+        <i class="fa-solid fa-bars"></i>
+        <span class="tk-menu-avatar"><i class="fa-solid fa-user"></i></span>
+      </button>
+
+      <ul class="dropdown-menu dropdown-menu-end tk-menu" aria-labelledby="tkProfileMenu">
+
+        <% if (currUser) { %>
+          <li class="tk-menu-head">
+            <span class="tk-menu-avatar tk-menu-avatar--lg"><i class="fa-solid fa-user"></i></span>
+            <div>
+              <div class="tk-menu-name">@<%= currUser.username %></div>
+              <div class="tk-menu-sub">Signed in</div>
+            </div>
+          </li>
+          <li><hr class="dropdown-divider"></li>
+        <% } %>
+
+        <li>
+          <a class="dropdown-item" href="/listings">
+            <i class="fa-regular fa-compass"></i> Explore
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="/listings/new">
+            <i class="fa-solid fa-circle-plus"></i> Add New Listing
+          </a>
+        </li>
+
+        <li><hr class="dropdown-divider"></li>
+
+        <% if (!currUser) { %>
+          <li>
+            <a class="dropdown-item" href="/signup">
+              <i class="fa-regular fa-address-card"></i> Sign Up
+            </a>
+          </li>
+        <% } %>
+        <% if (!currUser) { %>
+          <li>
+            <a class="dropdown-item tk-menu-strong login-link" href="/login">
+              <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
+            </a>
+          </li>
+        <% } %>
+
+        <% if (currUser) { %>
+          <li>
+            <a class="dropdown-item" href="/profile">
+              <i class="fa-regular fa-circle-user"></i> Profile
+            </a>
+          </li>
+        <% } %>
+        <% if (currUser) { %>
+          <li>
+            <a class="dropdown-item" href="/logout">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+            </a>
+          </li>
+        <% } %>
+
+      </ul>
+    </div>
+
+  </div>
+</nav>

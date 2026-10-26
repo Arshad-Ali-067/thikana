@@ -1,0 +1,140 @@
+<% layout("/layouts/boilerplate")%>
+
+<div class="row mt-3">
+  <div class="col-lg-10 mx-auto">
+
+    <!-- Profile header -->
+    <div class="tk-panel profile-head">
+      <span class="profile-avatar"><i class="fa-solid fa-user"></i></span>
+      <div class="flex-grow-1">
+        <h1 class="tk-page-title mb-1">@<%= currUser.username %></h1>
+        <p class="tk-page-sub mb-0"><i class="fa-regular fa-envelope me-2"></i><%= currUser.email %></p>
+      </div>
+      <div class="d-flex flex-wrap gap-2">
+        <a href="/listings/new" class="tk-btn tk-btn-primary"><i class="fa-solid fa-circle-plus"></i> Add New Listing</a>
+        <a href="/logout" class="tk-btn tk-btn-ghost"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+      </div>
+    </div>
+
+    <!-- Quick facts -->
+    <div class="row g-3 mt-1">
+      <div class="col-6 col-md-4">
+        <div class="tk-panel profile-stat">
+          <span class="profile-stat__num"><%= myListings.length %></span>
+          <span class="profile-stat__label">Your listings</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-4">
+        <a href="/listings" class="tk-panel profile-stat profile-stat--link">
+          <span class="profile-stat__num"><i class="fa-regular fa-compass"></i></span>
+          <span class="profile-stat__label">Explore stays</span>
+        </a>
+      </div>
+      <div class="col-12 col-md-4">
+        <a href="/listings/new" class="tk-panel profile-stat profile-stat--link">
+          <span class="profile-stat__num"><i class="fa-solid fa-house-circle-check"></i></span>
+          <span class="profile-stat__label">Host a new place</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Own listings -->
+    <div class="tk-section-head mt-5">
+      <div>
+        <h2 class="tk-page-title mb-0">Your listings</h2>
+        <p class="tk-page-sub mb-0">Places you host on Thikana.</p>
+      </div>
+    </div>
+
+    <% if (myListings.length > 0) { %>
+      <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
+      <% for(listing of myListings) { %>
+        <a href="/listings/<%=listing._id%>" class="listing-link">
+          <div class="card col listing-card">
+            <div class="listing-img-wrap">
+              <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <p class="card-text listing-title"><b><%=listing.title%></b></p>
+              <p class="listing-price">
+                &#8377; <strong><%= listing.price.toLocaleString("en-IN")%></strong> / night
+              </p>
+            </div>
+          </div>
+        </a>
+      <% } %>
+      </div>
+    <% } else { %>
+      <div class="tk-panel text-center py-5">
+        <div class="error-icon"><i class="fa-solid fa-house-chimney"></i></div>
+        <h3 class="h5 fw-bold">You haven't listed a place yet</h3>
+        <p class="text-secondary mb-3">Share your space with travelers and start hosting.</p>
+        <a href="/listings/new" class="tk-btn tk-btn-primary">Create your first listing</a>
+      </div>
+    <% } %>
+
+
+
+
+
+    <!-- Your reviews -->
+    <% const reviews = typeof myReviews === "undefined" ? [] : myReviews; %>
+    <div class="tk-section-head mt-5">
+      <div>
+        <h2 class="tk-page-title mb-0">Your reviews <span class="text-secondary">(<%= reviews.length %>)</span></h2>
+        <p class="tk-page-sub mb-0">What you've shared about places you've stayed.</p>
+      </div>
+    </div>
+
+    <% if (reviews.length > 0) { %>
+      <div class="row g-3">
+        <% reviews.forEach((review) => { %>
+          <div class="col-12 col-md-6">
+            <article class="review-card">
+              <header class="review-head">
+                <div class="review-meta">
+                  <% if (review.listing) { %>
+                    <a href="/listings/<%= review.listing._id %>" class="review-listing"><%= review.listing.title %></a>
+                    <span class="review-date"><%= review.listing.location %></span>
+                  <% } else { %>
+                    <span class="review-listing">Listing no longer available</span>
+                  <% } %>
+                </div>
+              </header>
+              <p class="starability-result" data-rating="<%= review.rating %>"></p>
+              <p class="review-text"><%= review.comment %></p>
+              <% if (review.createdAt) { %>
+                <time class="review-date" datetime="<%= new Date(review.createdAt).toISOString() %>"><%= new Date(review.createdAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) %></time>
+              <% } %>
+            </article>
+          </div>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <div class="tk-panel text-center py-5">
+        <div class="error-icon"><i class="fa-regular fa-star"></i></div>
+        <h3 class="h5 fw-bold">No reviews yet</h3>
+        <p class="text-secondary mb-3">Reviews you write on a stay will appear here.</p>
+        <a href="/listings" class="tk-btn tk-btn-primary">Explore stays</a>
+      </div>
+    <% } %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>
